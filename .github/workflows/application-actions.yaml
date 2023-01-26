@@ -21,6 +21,9 @@ jobs:
       - name: Generate JaCoCo Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
+        with:
+          jacoco-csv-file: spring-cucumber-data-generator/target/site/jacoco/jacoco.csv
+          fail-if-coverage-less-than: 10
 
       - name: Log coverage percentage
         run: |
