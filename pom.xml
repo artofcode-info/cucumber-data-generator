@@ -87,6 +87,9 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
+                <configuration>
+                    <formats>CSV</formats>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
