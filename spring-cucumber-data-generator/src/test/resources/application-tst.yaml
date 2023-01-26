@@ -1,0 +1,5 @@
+logging:
+  level:
+    .: INFO
+    org.springframework: INFO
+    org.artofcode.info: INFO
