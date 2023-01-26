@@ -4,10 +4,9 @@
 
 Project is compatible with java 8 and is base on following main open source libraries:
 
-### The project contains two modules:
+### The project contains one module:
 
 * spring-cucumber-data-generator
-* java-cucumber-data-generator
 
 ### The branch name must follow the pattern:
 
