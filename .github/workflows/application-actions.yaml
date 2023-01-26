@@ -18,3 +18,5 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
+      - name: JaCoCo Report
+        uses: Madrapps/jacoco-report@v1.3
