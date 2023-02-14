@@ -93,7 +93,7 @@ public interface StepArgProcessor {
 
     default String evaluateExpression(final String expression) {
         ExpressionParser expressionParser = new SpelExpressionParser();
-        EvaluationContext evaluationContext = new StandardEvaluationContext();
+        EvaluationContext evaluationContext = new StandardEvaluationContext(this);
         final Expression exp = expressionParser.parseExpression(expression);
         return (String) exp.getValue(evaluationContext);
     }

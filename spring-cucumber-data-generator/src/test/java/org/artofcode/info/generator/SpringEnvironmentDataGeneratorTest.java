@@ -51,6 +51,19 @@ public class SpringEnvironmentDataGeneratorTest {
         assertTrue(thrown.getMessage().contentEquals("The specified property: test.value.from.wrong was not found!"));
     }
 
+
+    @Test
+    void alListOneArgIsRequired() {
+        String testValue = "${env()}";
+        IllegalArgumentException thrown = assertThrows(
+                IllegalArgumentException.class,
+                () -> defaultStepArgProcessor.changeArg(testValue),
+                "Expected to throw, but it didn't"
+        );
+
+        assertTrue(thrown.getMessage().contentEquals("Cannot pre-process a step argument (env): at least one argument is required!"));
+    }
+
     @Test
     void returnSameValueWhenNotMatchingPatter() {
         String testValue = "same value is passed";
