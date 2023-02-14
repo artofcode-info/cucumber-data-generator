@@ -7,6 +7,4 @@ package org.artofcode.info.core;
 public interface SpecificDataGenerator {
 
     Object generate(String matchedValue);
-
-    String getPattern();
 }
