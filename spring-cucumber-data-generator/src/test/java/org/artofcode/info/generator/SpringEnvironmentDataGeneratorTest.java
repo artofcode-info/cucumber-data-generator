@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringJUnitConfig(TestConfig.class)
@@ -42,12 +45,7 @@ public class SpringEnvironmentDataGeneratorTest {
     @Test
     void catchingErrorThenProPropertyFound() {
         String testValue = "${env('test.value.from.wrong')}";
-        RuntimeException thrown = assertThrows(
-                RuntimeException.class,
-                () -> defaultStepArgProcessor.changeArg(testValue),
-                "Expected to throw, but it didn't"
-        );
-
+        RuntimeException thrown = assertThrows(RuntimeException.class, () -> defaultStepArgProcessor.changeArg(testValue), "Expected to throw, but it didn't");
         assertTrue(thrown.getMessage().contentEquals("The specified property: test.value.from.wrong was not found!"));
     }
 
@@ -55,11 +53,7 @@ public class SpringEnvironmentDataGeneratorTest {
     @Test
     void alListOneArgIsRequired() {
         String testValue = "${env()}";
-        IllegalArgumentException thrown = assertThrows(
-                IllegalArgumentException.class,
-                () -> defaultStepArgProcessor.changeArg(testValue),
-                "Expected to throw, but it didn't"
-        );
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> defaultStepArgProcessor.changeArg(testValue), "Expected to throw, but it didn't");
 
         assertTrue(thrown.getMessage().contentEquals("Cannot pre-process a step argument (env): at least one argument is required!"));
     }
@@ -69,5 +63,12 @@ public class SpringEnvironmentDataGeneratorTest {
         String testValue = "same value is passed";
         String results = (String) defaultStepArgProcessor.changeArg(testValue);
         assertEquals(testValue, results, "The expected value when not matching is wrong");
+    }
+
+    @Test
+    void updateAnElementFromAListOfStrings() {
+        List<String> stringList = Arrays.asList("${env('test.value.from.property')}");
+        List<String> results = (List<String>) defaultStepArgProcessor.changeArg(stringList);
+        assertTrue(results.stream().anyMatch("3025"::equals));
     }
 }
