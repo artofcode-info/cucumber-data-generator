@@ -18,6 +18,6 @@ Project is compatible with java 8 and is base on following main open source libr
 **release/{version}** - for versioning we will use semantic version principle
 
 
-### Commit message should have following format:
+### Commit message should have the following format:
 
 {issueId} - Informative message of the feature
