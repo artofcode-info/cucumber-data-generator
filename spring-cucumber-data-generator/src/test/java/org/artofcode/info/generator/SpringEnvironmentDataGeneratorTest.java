@@ -71,4 +71,11 @@ public class SpringEnvironmentDataGeneratorTest {
         List<String> results = (List<String>) defaultStepArgProcessor.changeArg(stringList);
         assertTrue(results.stream().anyMatch("3025"::equals));
     }
+
+    @Test
+    void generateValueBaseOnRegEx(){
+        String testValue = "${regEx('[0-9]{5}')}";
+        String results = (String) defaultStepArgProcessor.changeArg(testValue);
+        assertDoesNotThrow(()->Integer.parseInt(results));
+    }
 }

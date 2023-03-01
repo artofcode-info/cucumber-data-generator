@@ -4,6 +4,7 @@
 
 package org.artofcode.info.step.args.impl;
 
+import com.github.curiousoddman.rgxgen.RgxGen;
 import lombok.RequiredArgsConstructor;
 import org.artofcode.info.step.args.StepArgProcessor;
 import org.springframework.core.env.Environment;
@@ -31,5 +32,15 @@ public class DefaultStepArgProcessor implements StepArgProcessor {
         if (Objects.isNull(result))
             throw new RuntimeException(format("The specified property: %s was not found!", envRegex));
         return result;
+    }
+
+    public Object regEx(String... param) {
+        final Iterator<String> stringIterator = Arrays.asList(param).iterator();
+        if (!stringIterator.hasNext()) {
+            throw new IllegalArgumentException("Cannot pre-process a step argument (env): at least one argument is required!");
+        }
+        final String valueToBeGenerated = stringIterator.next();
+        RgxGen rgxGen = new RgxGen(valueToBeGenerated);
+        return rgxGen.generate();
     }
 }
