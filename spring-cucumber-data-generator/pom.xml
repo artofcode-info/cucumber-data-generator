@@ -44,6 +44,11 @@
             <version>${cucumber.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.curious-odd-man</groupId>
+            <artifactId>rgxgen</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
