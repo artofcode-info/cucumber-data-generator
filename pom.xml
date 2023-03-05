@@ -10,13 +10,19 @@
     <groupId>org.artofcode.info</groupId>
     <artifactId>cucumber-data-generator</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>8</maven.compiler.target>
         <junit.version>5.9.2</junit.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.boot.version>2.7.5</spring.boot.version>
+        <spring.version>5.3.25</spring.version>
+        <cucumber.version>7.11.1</cucumber.version>
+        <rgxgen.version>1.4</rgxgen.version>
     </properties>
 
     <licenses>
@@ -39,13 +45,32 @@
         <url>https://github.com/artofcode-info/cucumber-data-generator.git</url>
         <tag>HEAD</tag>
     </scm>
-
-    <modules>
-        <module>spring-cucumber-data-generator</module>
-    </modules>
-
-    <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>datatable</artifactId>
+                <version>${cucumber.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.curious-odd-man</groupId>
+                <artifactId>rgxgen</artifactId>
+                <version>${rgxgen.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -78,9 +103,7 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-
         </dependencies>
-    </dependencyManagement>
     <build>
         <plugins>
             <plugin>

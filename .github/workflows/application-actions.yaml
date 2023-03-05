@@ -22,7 +22,7 @@ jobs:
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
         with:
-          jacoco-csv-file: spring-cucumber-data-generator/target/site/jacoco/jacoco.csv
+          jacoco-csv-file: target/site/jacoco/jacoco.csv
           fail-if-coverage-less-than: 60
 
       - name: Log coverage percentage
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jacoco-report
-          path: spring-cucumber-data-generator/target/site/jacoco/
+          path: target/site/jacoco/

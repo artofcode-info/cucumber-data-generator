@@ -11,7 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
+ * Copyright (c) 2023.  steti93
+ */
 @SpringJUnitConfig(TestConfig.class)
 @TestPropertySource(properties = {"test.value.from.property=3025"})
 public class SpringEnvironmentDataGeneratorTest {

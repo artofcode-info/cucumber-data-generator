@@ -19,6 +19,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/*
+ * Copyright (c) 2023.  steti93
+ */
+
 public interface StepArgProcessor {
 
     String EXPRESSION_IS_SUBJECT_OF_CHANGE = "(.*)\\$\\{(.*)\\}(.*)";
