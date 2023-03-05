@@ -5,7 +5,7 @@
 Project is compatible with java 8 and higher versions, is base on following main open source libraries:
 * io.cucumber
 * org.springframework.boot
-* com.github.curious-odd-man
+* com.github.curious-odd-man.rgxgen
 ### The project contains one module:
 
 * spring-cucumber-data-generator
