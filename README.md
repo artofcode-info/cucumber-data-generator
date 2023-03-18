@@ -1,38 +1,33 @@
-# cucumber-data-generator
+# "Cucumber-data-generator" 
+Is an open-source Java 11 library designed to simplify the generation of test data from feature files.
 
-**Cucumber-data-generator** is an open source **java-11** library with the main scope to simplify generation of test
-data from the feature file.
+The project is compatible with Java 11 and is based on the following open-source libraries:
 
-Project is compatible with java 8 and higher versions, is base on following main open source libraries:
-
-* io.cucumber
-* org.springframework.boot **(version: 2.7.9)**
-* com.github.curious-odd-man.rgxgen
-
-### The project contains one module:
-
-* spring-cucumber-data-generator
+* **io.cucumber**
+* **org.springframework.boot (version: 2.7.9)**
+* **com.github.curious-odd-man.rgxgen**
 
 ### Test coverage:
-
+Test coverage report is available here:
 ![test coverage](.github/badges/jacoco.svg)
 
 ### How to configure:
 
-In order to configure the library in you project you will have to do following steps:
+To configure the library in your project, you will need to follow the steps below::
 
-1. [x] Add the maven dependency to you test or development project:
+1. Add the maven dependency to you test or development project:
 
         <dependency>
             <groupId>org.artofcode.info</groupId>
             <artifactId>cucumber-data-generator</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>latest-version</version>
          </dependency>
 
-3. [x] Extend your Spring configuration class to import
+2. Extend your Spring configuration class to import
    `CucumberDataGeneratorSpringConfig.class` the import annotation will be like following:
    `@Import({CucumberDataGeneratorSpringConfig.class})`
-4. [x] Enjoy and generate your data from feature file with following patterns: `${regEx('[0-9]{5}')} `
+
+3. Enjoy and generate your data from feature file with following patterns: `${regEx('[0-9]{5}')} `
 
 ### Example of use:
 
