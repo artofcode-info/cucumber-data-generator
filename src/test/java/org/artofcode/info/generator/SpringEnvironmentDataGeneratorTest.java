@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 /*
  * Copyright (c) 2023.  steti93
  */
@@ -45,6 +46,13 @@ public class SpringEnvironmentDataGeneratorTest {
     }
 
     @Test
+    void returningTheEnPlusConcat() {
+        String testValue = "${env('test.value.from.property').concat('22')}";
+        String results = (String) defaultStepArgProcessor.changeArg(testValue);
+        assertEquals("302522", results, "The expected env value is not correct");
+    }
+
+    @Test
     void catchingErrorThenProPropertyFound() {
         String testValue = "${env('test.value.from.wrong')}";
         RuntimeException thrown = assertThrows(RuntimeException.class, () -> defaultStepArgProcessor.changeArg(testValue), "Expected to throw, but it didn't");
@@ -75,9 +83,9 @@ public class SpringEnvironmentDataGeneratorTest {
     }
 
     @Test
-    void generateValueBaseOnRegEx(){
+    void generateValueBaseOnRegEx() {
         String testValue = "${regEx('[0-9]{5}')}";
         String results = (String) defaultStepArgProcessor.changeArg(testValue);
-        assertDoesNotThrow(()->Integer.parseInt(results));
+        assertDoesNotThrow(() -> Integer.parseInt(results));
     }
 }

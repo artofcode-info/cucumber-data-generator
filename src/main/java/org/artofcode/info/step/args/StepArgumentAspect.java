@@ -1,11 +1,14 @@
 package org.artofcode.info.step.args;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Stream;
 
 /*
  * Copyright (c) 2023.  steti93
@@ -14,7 +17,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Log4j2
+@AllArgsConstructor
 public class StepArgumentAspect {
+
+    private final StepArgProcessor stepArgProcessor;
 
     @Pointcut("@annotation(io.cucumber.java.en.Given)")
     public void givenStepPointCut() {
@@ -38,22 +44,8 @@ public class StepArgumentAspect {
 
     @Around("givenStepPointCut() || whenStepPointCut()||thenStepPointCut()||andStepPointCut()||butStepPointCut()")
     public Object processStepArguments(ProceedingJoinPoint joinPoint) throws Throwable {
-//        Stream methodArgs = Stream.of(joinPoint.getArgs());
-////        Object[] updatedArgs = methodArgs.map(this::getValueBaseOnPattern).toArray();
-//        return joinPoint.proceed(updatedArgs);
-        return null;
+        Stream methodArgs = Stream.of(joinPoint.getArgs());
+        Object[] updatedArgs = methodArgs.map(stepArgProcessor::changeArg).toArray();
+        return joinPoint.proceed(updatedArgs);
     }
-
-//    private Object getValueBaseOnPattern(Object objectArg) {
-//        Object result = objectArg;
-//        if (Objects.nonNull(objectArg)) {
-//            if (objectArg instanceof String) {
-//               //TODO Add here the factory method
-//                }
-//            }
-//        }
-//        return result;
-//    }
-
-
 }
