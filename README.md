@@ -16,16 +16,16 @@ Test coverage report is available here:
 
 To configure the library in your project, you will need to follow the steps below::
 
-1. Add the maven dependency to you test or development project:
+1. Add the maven dependency to your test or development project:
 
         <dependency>
             <groupId>io.github.artofcode-info</groupId>
             <artifactId>cucumber-data-generator</artifactId>
-            <version>0.0.5</version>
+            <version>0.0.6</version>
          </dependency>
 
 2. Extend your Spring configuration class to import
-   `CucumberDataGeneratorSpringConfig.class` the import annotation will be like following:
+   `CucumberDataGeneratorSpringConfig.class` the import annotation will be like the following:
    `@Import({CucumberDataGeneratorSpringConfig.class})`
 
 3. After configuring, you can generate your data from feature files using the following patterns: `${regEx('[0-9]{5}')} `
