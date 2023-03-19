@@ -9,6 +9,7 @@ The project is compatible with Java 11 and is based on the following open-source
 
 ### Test coverage:
 Test coverage report is available here:
+
 ![test coverage](.github/badges/jacoco.svg)
 
 ### How to configure:
@@ -27,7 +28,7 @@ To configure the library in your project, you will need to follow the steps belo
    `CucumberDataGeneratorSpringConfig.class` the import annotation will be like following:
    `@Import({CucumberDataGeneratorSpringConfig.class})`
 
-3. Enjoy and generate your data from feature file with following patterns: `${regEx('[0-9]{5}')} `
+3. After configuring, you can generate your data from feature files using the following patterns: `${regEx('[0-9]{5}')} `
 
 ### Example of use:
 
@@ -35,11 +36,11 @@ To get the value from an environment variable:
 
     ${env('test.value.from.property')}
 
-To generate a random value base on regular expression:
+To generate a random value based on a regular expression:
 
     ${regEx('[0-9]{5}')}
 
-Combine multiple functions for example get the value base on property name and concat with a string:
+To combine multiple functions (for example, get the value based on property name and concatenate with a string):
 
     ${env('test.value.from.property').concat('22')}
 
