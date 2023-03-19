@@ -28,16 +28,17 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-repository
 
+      - name: Configure maven profile
+        uses: s4u/maven-settings-action@v2.8.0
+        with:
+          servers: '[{"id": "central-repository-ossrh", "username": "${{ secrets.OSSRH_USERNAME }}", "password": "${{ secrets.OSSRH_TOKEN }}"}]'
+
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           artifacts: "${{ github.workspace }}/target/*.jar"
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: s4u/maven-settings-action@v2.8.0
-        with:
-          servers: '[{"id": "central-repository-ossrh", "username": "${{ secrets.OSSRH_USERNAME }}", "password": "${{ secrets.OSSRH_TOKEN }}"}]'
 
       - name: Publish to the Maven Central Repository
         run: |
