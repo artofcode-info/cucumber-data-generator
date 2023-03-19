@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.artofcode-info</groupId>
     <artifactId>cucumber-data-generator</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -111,6 +111,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>ossrh-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
     <profiles>
         <profile>
             <id>github</id>
@@ -130,11 +138,11 @@
         </profile>
     </profiles>
     <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <name>Central Repository OSSRH</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
+        <snapshotRepository>
+            <id>central-repository-ossrh</id>
+            <name>Snapshots Repository OSSRH</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
     <build>
         <plugins>
@@ -167,7 +175,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -187,10 +195,10 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
+                <version>1.6.8</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
+                    <serverId>central-repository-ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
