@@ -35,6 +35,10 @@ jobs:
           artifacts: "${{ github.workspace }}/target/*.jar"
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: s4u/maven-settings-action@v2.8.0
+        with:
+          servers: '[{"id": "central-repository-ossrh", "username": "${{ secrets.OSSRH_USERNAME }}", "password": "${{ secrets.OSSRH_TOKEN }}"}]'
+
       - name: Publish to the Maven Central Repository
         run: |
           mvn \
