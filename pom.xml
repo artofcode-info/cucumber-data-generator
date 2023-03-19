@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.artofcode-info</groupId>
     <artifactId>cucumber-data-generator</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -128,17 +128,14 @@
                 </repository>
             </distributionManagement>
         </profile>
-        <profile>
-            <id>release</id>
-            <distributionManagement>
-                <repository>
-                    <id>ossrh</id>
-                    <name>Central Repository OSSRH</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-        </profile>
     </profiles>
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>

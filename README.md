@@ -19,9 +19,9 @@ To configure the library in your project, you will need to follow the steps belo
 1. Add the maven dependency to you test or development project:
 
         <dependency>
-            <groupId>org.artofcode.info</groupId>
+            <groupId>io.github.artofcode-info</groupId>
             <artifactId>cucumber-data-generator</artifactId>
-            <version>0.0.4</version>
+            <version>0.0.5</version>
          </dependency>
 
 2. Extend your Spring configuration class to import
