@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Java for publishing to Maven Central Repository
-        uses: actions/setup-java@v1
+      - name: Set up Java and MVN
+        uses: actions/setup-java@v2
         with:
           java-version: '11'
           server-id: central-repository-ossrh
@@ -40,13 +40,20 @@ jobs:
           artifacts: "${{ github.workspace }}/target/*.jar"
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to the Maven Central Repository
+      - id: install-secret-key
+        name: Install gpg secret key
+        run: |
+          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG     
+
+      - id: publish-to-central
+        name: Publish to Central Repository
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         run: |
           mvn \
             --no-transfer-progress \
             --batch-mode \
-            deploy
-        env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+            -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
+            clean deploy
