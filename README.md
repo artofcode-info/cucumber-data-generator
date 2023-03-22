@@ -21,7 +21,7 @@ To configure the library in your project, you will need to follow the steps belo
         <dependency>
             <groupId>io.github.artofcode-info</groupId>
             <artifactId>cucumber-data-generator</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.2</version>
          </dependency>
 
 2. Extend your Spring configuration class to import
