@@ -12,6 +12,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
+          distribution: 'temurin'
           server-id: central-repository-ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
