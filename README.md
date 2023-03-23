@@ -10,7 +10,7 @@ The project is compatible with Java 11 and is based on the following open-source
 ### Test coverage:
 Test coverage report is available here:
 
-![test coverage](.github/badges/jacoco.svg)
+![test coverage](.github/badges/jacoco.svg) [![CI/CD](https://github.com/artofcode-info/cucumber-data-generator/actions/workflows/application-actions.yaml/badge.svg)](https://github.com/artofcode-info/cucumber-data-generator/actions/workflows/application-actions.yaml) [![Build](https://github.com/artofcode-info/cucumber-data-generator/actions/workflows/release-package.yml/badge.svg)](https://github.com/artofcode-info/cucumber-data-generator/actions/workflows/release-package.yml)
 
 ### How to configure:
 
