@@ -29,11 +29,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-repository
 
-      - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v20
-        with:
-          servers: '[{ "id": "central-repository-ossrh", "username": "${{ secrets.OSSRH_USERNAME }}", "password": "${{ secrets.OSSRH_TOKEN }}" }]'
-
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
